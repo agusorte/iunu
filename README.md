@@ -15,7 +15,7 @@ this code recognize geometric shapes, and compute some shape primitives: center,
 
 
 ## 1. Clone repository
-
+	git clone https://github.com/agusorte/iunu
 
 
 ## 2. Compilation
