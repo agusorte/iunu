@@ -24,55 +24,54 @@ class shapeDetector{
 
 		void detect(const vector<Point>& c){
 
-			// perimeter and area
-			perimeter = arcLength(c, true);
-			area = contourArea(c);
+		  // perimeter and area
+		  perimeter = arcLength(c, true);
+		  area = contourArea(c);
 
-			// center
-			Moments mm = moments(c, false);
+		  // center
+		  Moments mm = moments(c, false);
 
-			center = Point(mm.m10/mm.m00, mm.m01/mm.m00);
+		  center = Point(mm.m10/mm.m00, mm.m01/mm.m00);
 
 
-			// depends of the sides we can compute the shape
-			vector<Point> approx;
-			approxPolyDP(c, approx, 0.04 * perimeter,true );
+		  // depends of the sides we can compute the shape
+	          vector<Point> approx;
+		  approxPolyDP(c, approx, 0.04 * perimeter,true );
 
-			shape = findShape(approx);
+		  shape = findShape(approx);
 		};
 
 		// here we decide what shape is
 		string findShape(const vector<Point>& approx){
 
-			if(approx.size() == 3){
-				return "triangle";
-			}
-			else if (approx.size() == 4){
+		  if(approx.size() == 3){
+	            return "triangle";
+		  }
+		  else if (approx.size() == 4){
+		    return "rectangle";
+		  }
+		  else{
 
-				return "rectangle";
-			}
-			else{
-
-				return "circle";
-			}
+		    return "circle";
+		  }
 		};
 
 		string getShape(){
-			return shape;
+		  return shape;
 		};
 
 		float getArea(){
-			return area;
+		  return area;
 		};
 
 		float getPerimeter(){
 
-			return perimeter;
+		  return perimeter;
 		};
 
 		Point getCenter(){
 
-			return center;
+	          return center;
 		};
 
 
@@ -122,9 +121,9 @@ int main(int argc, const char * argv[]){
 
   for(int i = 0; i< contours.size(); i++){
 
-  	shapedetector[i].detect(contours[i]);
+    shapedetector[i].detect(contours[i]);
 
-  	Scalar color = Scalar(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255));
+    Scalar color = Scalar(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255));
     drawContours(drawing, contours, i, color, 2, 8, hierarchy, 0, Point());
 
     circle(drawing, shapedetector[i].getCenter(), 2, Scalar(0,0,255));
