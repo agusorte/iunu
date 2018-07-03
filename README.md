@@ -6,8 +6,9 @@ this code recognize geometric shapes, and compute some shape primitives: center,
 
 
 **Author: [Agustin Ortega](https://github.com/agusorte), aortega.jim@gmail.com**
-![project_selfdriving example: video](doc/output.png)
-
+![image_output: image](doc/output.png)
+-
+![image_output: image](shapes.jpg)
 ## Dependences
 
 - [CMake] (http://www.cmake.org/) 
